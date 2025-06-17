@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑科技配置 - 后台管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- 侧边栏 -->
+        <aside class="w-64 bg-white shadow-lg">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold text-gray-800">管理系统</h1>
+            </div>
+            <nav class="mt-4">
+                <!-- 系统管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="account-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">账号管理</a></li>
+                        <li><a href="agent-review.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人审核</a></li>
+                        <li><a href="agent-info.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人信息</a></li>
+                    </ul>
+                </div>
+                <!-- 业务管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">业务管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="broker-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人管理</a></li>
+                        <li><a href="car-stats.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆推荐统计</a></li>
+                        <li><a href="report-analysis.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">报表分析</a></li>
+                        <li><a href="withdrawal-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">提现记录</a></li>
+                        <li><a href="incentive-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励发放记录</a></li>
+                    </ul>
+                </div>
+                <!-- 内容管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">内容管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="brand-news.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">品牌新闻</a></li>
+                        <li><a href="car-guide.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">用车指南</a></li>
+                        <li><a href="image-gallery.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">图片库</a></li>
+                        <li><a href="share-template.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">分享模板</a></li>
+                    </ul>
+                </div>
+                <!-- 系统配置 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统配置</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="incentive-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励配置</a></li>
+                        <li><a href="alert-rules.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">交易提醒规则</a></li>
+                        <li><a href="tech-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded bg-gray-100">黑科技配置</a></li>
+                        <li><a href="policy-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">政策配置</a></li>
+                        <li><a href="car-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆配置</a></li>
+                        <li><a href="tech-publish.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技发布</a></li>
+                    </ul>
+                </div>
+                <!-- 消息中心 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">消息中心</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="message-center.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">消息管理</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 p-8">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <!-- 黑科技配置卡片 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900">黑科技配置</h2>
+                        <button onclick="openConfigModal()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            添加配置
+                        </button>
+                    </div>
+
+                    <!-- 筛选和搜索 -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">功能类型</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部类型</option>
+                                <option>智能推荐</option>
+                                <option>数据分析</option>
+                                <option>自动化工具</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">使用场景</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部场景</option>
+                                <option>销售环节</option>
+                                <option>客户服务</option>
+                                <option>运营管理</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">状态</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部状态</option>
+                                <option>已启用</option>
+                                <option>已禁用</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">搜索</label>
+                            <input type="text" placeholder="搜索功能名称..." class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- 配置列表 -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">功能名称</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">功能类型</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">使用场景</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">配置参数</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状态</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">智能车型推荐</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">智能推荐</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">销售环节</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <span class="text-blue-600 cursor-pointer hover:text-blue-800">查看详情</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                            已启用
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">编辑</button>
+                                        <button class="text-red-600 hover:text-red-900">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">客户行为分析</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">数据分析</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">运营管理</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <span class="text-blue-600 cursor-pointer hover:text-blue-800">查看详情</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                            已启用
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">编辑</button>
+                                        <button class="text-red-600 hover:text-red-900">删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 分页 -->
+                    <div class="flex justify-between items-center mt-6">
+                        <div class="text-sm text-gray-700">
+                            显示 1 到 2 条，共 10 条
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">上一页</button>
+                            <button class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">下一页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 添加配置模态框 -->
+    <div id="configModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-xl font-bold text-gray-900">添加黑科技配置</h3>
+                    <button onclick="closeConfigModal()" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">功能名称</label>
+                            <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="输入功能名称">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">功能类型</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>智能推荐</option>
+                                <option>数据分析</option>
+                                <option>自动化工具</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">使用场景</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>销售环节</option>
+                                <option>客户服务</option>
+                                <option>运营管理</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">配置参数</label>
+                            <div class="mt-2 space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm text-gray-600">参数名称</label>
+                                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="输入参数名称">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm text-gray-600">参数值</label>
+                                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="输入参数值">
+                                    </div>
+                                </div>
+                                <button type="button" class="text-blue-600 hover:text-blue-800 text-sm">+ 添加参数</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">功能描述</label>
+                            <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" rows="3" placeholder="输入功能描述"></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label class="ml-2 block text-sm text-gray-900">立即启用</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="flex justify-end space-x-3 p-6 border-t">
+                    <button onclick="closeConfigModal()" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        取消
+                    </button>
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 打开配置模态框
+        function openConfigModal() {
+            document.getElementById('configModal').classList.remove('hidden');
+        }
+
+        // 关闭配置模态框
+        function closeConfigModal() {
+            document.getElementById('configModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html> 

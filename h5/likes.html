@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的点赞</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center">
+            <a href="profile.html" class="mr-3">
+                <i class="fas fa-chevron-left text-gray-600"></i>
+            </a>
+            <h1 class="text-lg font-semibold text-gray-800">我的点赞</h1>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4">
+        <!-- 点赞列表 -->
+        <div class="space-y-4">
+            <!-- 点赞项 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-medium text-gray-800">新能源汽车充电桩布局规划</h3>
+                        <button onclick="removeLike(1)" class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-thumbs-up text-blue-500"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">点赞时间：2024-03-20 14:30</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-newspaper mr-2"></i>
+                        <span>品牌资讯</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-medium text-gray-800">智能座舱功能介绍</h3>
+                        <button onclick="removeLike(2)" class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-thumbs-up text-blue-500"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">点赞时间：2024-03-19 10:15</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-video mr-2"></i>
+                        <span>视频教程</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-medium text-gray-800">冬季用车注意事项</h3>
+                        <button onclick="removeLike(3)" class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-thumbs-up text-blue-500"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">点赞时间：2024-03-18 16:45</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i>
+                        <span>用车指南</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 移除点赞
+        function removeLike(id) {
+            if (confirm('确定要取消点赞吗？')) {
+                // 这里添加取消点赞的逻辑
+                console.log('取消点赞：', id);
+                // 移除对应的元素
+                const item = event.target.closest('.bg-white');
+                item.remove();
+            }
+        }
+
+        // 点击点赞项跳转到详情页
+        document.querySelectorAll('.bg-white').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (!e.target.closest('button')) {
+                    // 这里添加跳转到详情页的逻辑
+                    console.log('跳转到详情页');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

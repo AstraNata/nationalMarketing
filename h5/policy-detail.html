@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>政策详情</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center">
+            <button onclick="history.back()" class="mr-4">
+                <i class="fas fa-chevron-left text-gray-600"></i>
+            </button>
+            <h1 class="text-lg font-semibold text-gray-800">政策详情</h1>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4 pb-20">
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <!-- 政策标题 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xl font-medium text-gray-800" id="policyTitle">2024年汽车销售政策更新</h2>
+                    <span class="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded" id="policyTag">最新</span>
+                </div>
+                <div class="text-sm text-gray-500">
+                    <p>发布时间：<span id="policyDate">2024-01-15</span></p>
+                </div>
+            </div>
+
+            <!-- 政策内容 -->
+            <div class="p-4">
+                <div class="prose max-w-none">
+                    <!-- 政策概述 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-3">政策概述</h3>
+                        <p class="text-gray-600" id="policySummary">
+                            为促进汽车市场健康发展，提升经销商营销效率，现就有关事项通知如下：
+                        </p>
+                    </div>
+
+                    <!-- 主要内容 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-3">主要内容</h3>
+                        <div class="space-y-4" id="policyContent">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium text-gray-800">新能源汽车补贴政策</p>
+                                    <p class="text-gray-600 mt-1">延续至2024年底，补贴标准维持不变，具体实施细则请咨询当地主管部门。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium text-gray-800">经销商营销费用补贴</p>
+                                    <p class="text-gray-600 mt-1">提升至15%，支持经销商开展各类营销活动，促进销售增长。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium text-gray-800">数字化营销工具使用补贴</p>
+                                    <p class="text-gray-600 mt-1">支持经销商使用数字化营销工具，提升营销效率，具体补贴标准详见附件。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 政策图片 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-3">政策图解</h3>
+                        <div class="space-y-4">
+                            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&auto=format&fit=crop&q=60" 
+                                 alt="政策图解" 
+                                 class="w-full rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                                 onclick="showImage(this.src)">
+                            <p class="text-sm text-gray-500">图1：2024年汽车销售政策要点</p>
+                        </div>
+                    </div>
+
+                    <!-- 实施细则 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-3">实施细则</h3>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <ul class="list-decimal pl-5 space-y-2 text-gray-600">
+                                <li>政策执行时间：2024年1月1日至2024年12月31日</li>
+                                <li>补贴申请流程：通过经销商管理系统在线提交申请</li>
+                                <li>审核周期：申请提交后5个工作日内完成审核</li>
+                                <li>补贴发放：审核通过后10个工作日内完成发放</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 联系方式 -->
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-800 mb-3">联系方式</h3>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="space-y-2 text-gray-600">
+                                <p class="flex items-center">
+                                    <i class="fas fa-phone-alt w-6"></i>
+                                    <span>政策咨询热线：400-888-8888</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-envelope w-6"></i>
+                                    <span>政策咨询邮箱：policy@example.com</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-clock w-6"></i>
+                                    <span>工作时间：周一至周五 9:00-18:00</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片预览模态框 -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50" onclick="closeModal()">
+        <img id="modalImage" class="max-w-full max-h-full m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    </div>
+
+    <script>
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const policyId = urlParams.get('id');
+
+        // 模拟政策数据
+        const policyData = {
+            '1': {
+                title: '2024年汽车销售政策更新',
+                tag: '最新',
+                date: '2024-01-15',
+                summary: '为促进汽车市场健康发展，提升经销商营销效率，现就有关事项通知如下：',
+                content: [
+                    {
+                        title: '新能源汽车补贴政策',
+                        description: '延续至2024年底，补贴标准维持不变，具体实施细则请咨询当地主管部门。'
+                    },
+                    {
+                        title: '经销商营销费用补贴',
+                        description: '提升至15%，支持经销商开展各类营销活动，促进销售增长。'
+                    },
+                    {
+                        title: '数字化营销工具使用补贴',
+                        description: '支持经销商使用数字化营销工具，提升营销效率，具体补贴标准详见附件。'
+                    }
+                ]
+            }
+        };
+
+        // 加载政策数据
+        function loadPolicyData() {
+            const policy = policyData[policyId];
+            if (policy) {
+                document.getElementById('policyTitle').textContent = policy.title;
+                document.getElementById('policyTag').textContent = policy.tag;
+                document.getElementById('policyDate').textContent = policy.date;
+                document.getElementById('policySummary').textContent = policy.summary;
+                
+                // 更新政策内容
+                const contentHtml = policy.content.map(item => `
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <div>
+                            <p class="font-medium text-gray-800">${item.title}</p>
+                            <p class="text-gray-600 mt-1">${item.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('policyContent').innerHTML = contentHtml;
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadPolicyData);
+
+        // 图片预览功能
+        function showImage(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.classList.remove('hidden');
+            modalImg.src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框背景关闭
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // 阻止模态框内的图片点击事件冒泡
+        document.getElementById('modalImage').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html> 

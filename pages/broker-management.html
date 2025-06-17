@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经纪人管理 - 后台管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@heroicons/react@2.0.18/outline.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- 侧边栏 -->
+        <aside class="w-64 bg-white shadow-lg">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold text-gray-800">管理系统</h1>
+            </div>
+            <nav class="mt-4">
+                <!-- 系统管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="account-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">账号管理</a></li>
+                        <li><a href="agent-review.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人审核</a></li>
+                        <li><a href="agent-info.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人信息</a></li>
+                    </ul>
+                </div>
+                <!-- 业务管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">业务管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="broker-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded bg-gray-100">经纪人管理</a></li>
+                        <li><a href="car-stats.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆推荐统计</a></li>
+                        <li><a href="report-analysis.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">报表分析</a></li>
+                        <li><a href="withdrawal-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">提现记录</a></li>
+                        <li><a href="incentive-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励发放记录</a></li>
+                    </ul>
+                </div>
+                <!-- 内容管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">内容管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="brand-news.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">品牌新闻</a></li>
+                        <li><a href="car-guide.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">用车指南</a></li>
+                        <li><a href="image-gallery.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">图片库</a></li>
+                        <li><a href="share-template.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">分享模板</a></li>
+                    </ul>
+                </div>
+                <!-- 系统配置 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统配置</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="incentive-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励配置</a></li>
+                        <li><a href="alert-rules.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">交易提醒规则</a></li>
+                        <li><a href="tech-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技配置</a></li>
+                        <li><a href="policy-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">政策配置</a></li>
+                        <li><a href="car-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆配置</a></li>
+                        <li><a href="tech-publish.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技发布</a></li>
+                    </ul>
+                </div>
+                <!-- 消息中心 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">消息中心</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="message-center.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">消息管理</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 p-8">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <!-- 经纪人管理 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900">经纪人管理</h2>
+                        <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" onclick="openBrokerModal()">
+                            添加经纪人
+                        </button>
+                    </div>
+
+                    <!-- 搜索和筛选 -->
+                    <div class="mb-6 flex space-x-4">
+                        <div class="flex-1">
+                            <input type="text" placeholder="搜索姓名/手机号" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">所有状态</option>
+                            <option value="active">正常</option>
+                            <option value="pending">待审核</option>
+                            <option value="disabled">已禁用</option>
+                        </select>
+                        <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">所有等级</option>
+                            <option value="gold">金牌</option>
+                            <option value="silver">银牌</option>
+                            <option value="bronze">铜牌</option>
+                        </select>
+                    </div>
+
+                    <!-- 经纪人列表 -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">姓名</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">手机号</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">等级</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状态</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">注册时间</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">张三</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">13800138000</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            金牌
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            正常
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">2024-03-20</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3" onclick="editBroker('broker1')">编辑</button>
+                                        <button class="text-yellow-600 hover:text-yellow-900 mr-3" onclick="viewDetails('broker1')">详情</button>
+                                        <button class="text-red-600 hover:text-red-900" onclick="deleteBroker('broker1')">删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 经纪人管理模态框 -->
+    <div id="brokerModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-900">添加经纪人</h3>
+                        <button type="button" class="text-gray-400 hover:text-gray-500" onclick="closeBrokerModal()">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">姓名</label>
+                            <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">手机号</label>
+                            <input type="tel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">等级</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option value="gold">金牌</option>
+                                <option value="silver">银牌</option>
+                                <option value="bronze">铜牌</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">状态</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option value="active">正常</option>
+                                <option value="pending">待审核</option>
+                                <option value="disabled">已禁用</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <button type="button" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50" onclick="closeBrokerModal()">
+                                取消
+                            </button>
+                            <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                                保存
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 经纪人管理模态框
+        function openBrokerModal() {
+            document.getElementById('brokerModal').classList.remove('hidden');
+        }
+
+        function closeBrokerModal() {
+            document.getElementById('brokerModal').classList.add('hidden');
+        }
+
+        // 经纪人操作
+        function editBroker(brokerId) {
+            console.log('编辑经纪人:', brokerId);
+            openBrokerModal();
+        }
+
+        function viewDetails(brokerId) {
+            console.log('查看详情:', brokerId);
+        }
+
+        function deleteBroker(brokerId) {
+            if (confirm('确定要删除该经纪人吗？')) {
+                console.log('删除经纪人:', brokerId);
+            }
+        }
+    </script>
+</body>
+</html> 

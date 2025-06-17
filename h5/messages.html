@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>消息通知</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center">
+            <button onclick="history.back()" class="text-gray-600">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1 class="text-lg font-semibold text-gray-800 flex-1 text-center">消息通知</h1>
+            <button onclick="showMessageSettings()" class="text-gray-600">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4 pb-20">
+        <!-- 消息分类标签 -->
+        <div class="flex space-x-4 mb-6 overflow-x-auto pb-2">
+            <button onclick="filterMessages('all')" 
+                    class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm whitespace-nowrap">
+                全部消息
+            </button>
+            <button onclick="filterMessages('system')" 
+                    class="px-4 py-2 bg-white text-gray-600 rounded-full text-sm whitespace-nowrap">
+                系统通知
+            </button>
+            <button onclick="filterMessages('review')" 
+                    class="px-4 py-2 bg-white text-gray-600 rounded-full text-sm whitespace-nowrap">
+                审核通知
+            </button>
+            <button onclick="filterMessages('activity')" 
+                    class="px-4 py-2 bg-white text-gray-600 rounded-full text-sm whitespace-nowrap">
+                活动通知
+            </button>
+        </div>
+
+        <!-- 消息列表 -->
+        <div class="space-y-4">
+            <!-- 未读消息 -->
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div class="flex items-center flex-1" onclick="showMessageDetail(1)">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-bell text-blue-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center">
+                            <p class="text-sm font-medium text-gray-800">经纪人申请审核通过</p>
+                            <span class="ml-2 px-2 py-0.5 bg-red-100 text-red-600 rounded-full text-xs">未读</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">恭喜您！您的经纪人申请已通过审核，现在可以开始接单了。</p>
+                        <p class="text-xs text-gray-400 mt-1">2024-03-20 14:30</p>
+                    </div>
+                </div>
+                <button onclick="deleteMessage(1)" class="ml-4 text-gray-400 hover:text-red-500">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+
+            <!-- 已读消息 -->
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div class="flex items-center flex-1" onclick="showMessageDetail(2)">
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-gift text-green-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-sm font-medium text-gray-800">新活动上线通知</p>
+                        <p class="text-xs text-gray-500 mt-1">春季特惠活动已开始，邀请您参与推广。</p>
+                        <p class="text-xs text-gray-400 mt-1">2024-03-19 10:15</p>
+                    </div>
+                </div>
+                <button onclick="deleteMessage(2)" class="ml-4 text-gray-400 hover:text-red-500">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div class="flex items-center flex-1" onclick="showMessageDetail(3)">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-file-alt text-yellow-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-sm font-medium text-gray-800">平台政策更新</p>
+                        <p class="text-xs text-gray-500 mt-1">关于佣金结算规则调整的通知。</p>
+                        <p class="text-xs text-gray-400 mt-1">2024-03-18 16:45</p>
+                    </div>
+                </div>
+                <button onclick="deleteMessage(3)" class="ml-4 text-gray-400 hover:text-red-500">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息详情模态框 -->
+    <div id="messageDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg w-full max-w-sm">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-800">消息详情</h3>
+                        <button onclick="closeMessageDetail()" class="text-gray-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-800 mb-2">经纪人申请审核通过</h4>
+                            <p class="text-xs text-gray-500">2024-03-20 14:30</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-sm text-gray-600">
+                                尊敬的用户：<br><br>
+                                恭喜您！您的经纪人申请已通过审核。现在您可以开始接单，为客户提供专业的服务了。<br><br>
+                                请及时完善您的个人资料，上传相关资质证明，以便更好地开展业务。<br><br>
+                                如有任何问题，请随时联系客服。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息设置模态框 -->
+    <div id="messageSettingsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg w-full max-w-sm">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-800">消息设置</h3>
+                        <button onclick="closeMessageSettings()" class="text-gray-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- 系统通知 -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-800">系统通知</p>
+                                <p class="text-xs text-gray-500">接收平台政策更新等通知</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                        <!-- 审核通知 -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-800">审核通知</p>
+                                <p class="text-xs text-gray-500">接收申请审核结果通知</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                        <!-- 活动通知 -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-800">活动通知</p>
+                                <p class="text-xs text-gray-500">接收平台活动邀请通知</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                        <!-- 保存按钮 -->
+                        <button onclick="saveMessageSettings()" 
+                                class="w-full bg-blue-500 text-white py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors">
+                            保存设置
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 显示消息详情
+        function showMessageDetail(id) {
+            document.getElementById('messageDetailModal').classList.remove('hidden');
+            // 这里可以添加标记消息为已读的逻辑
+            markMessageAsRead(id);
+        }
+
+        // 关闭消息详情
+        function closeMessageDetail() {
+            document.getElementById('messageDetailModal').classList.add('hidden');
+        }
+
+        // 删除消息
+        function deleteMessage(id) {
+            if (confirm('确定要删除这条消息吗？')) {
+                // 这里可以添加删除消息的逻辑
+                console.log('删除消息：', id);
+                // 从列表中移除消息
+                const messageElement = event.target.closest('.flex.items-center.justify-between');
+                messageElement.remove();
+            }
+        }
+
+        // 标记消息为已读
+        function markMessageAsRead(id) {
+            // 这里可以添加标记消息为已读的逻辑
+            console.log('标记消息为已读：', id);
+        }
+
+        // 显示消息设置
+        function showMessageSettings() {
+            document.getElementById('messageSettingsModal').classList.remove('hidden');
+        }
+
+        // 关闭消息设置
+        function closeMessageSettings() {
+            document.getElementById('messageSettingsModal').classList.add('hidden');
+        }
+
+        // 保存消息设置
+        function saveMessageSettings() {
+            // 这里可以添加保存消息设置的逻辑
+            console.log('保存消息设置');
+            closeMessageSettings();
+            alert('设置已保存');
+        }
+
+        // 筛选消息
+        function filterMessages(type) {
+            // 更新标签样式
+            const buttons = document.querySelectorAll('.flex.space-x-4 button');
+            buttons.forEach(button => {
+                button.classList.remove('bg-blue-500', 'text-white');
+                button.classList.add('bg-white', 'text-gray-600');
+            });
+            event.target.classList.remove('bg-white', 'text-gray-600');
+            event.target.classList.add('bg-blue-500', 'text-white');
+
+            // 这里可以添加筛选消息的逻辑
+            console.log('筛选消息类型：', type);
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 这里可以添加加载消息列表的逻辑
+            console.log('加载消息列表');
+        });
+    </script>
+</body>
+</html> 

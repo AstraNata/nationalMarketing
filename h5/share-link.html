@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>分享链接</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3">
+            <h1 class="text-lg font-semibold text-gray-800 text-center">分享链接</h1>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4 pb-20">
+        <!-- 分享模板选择 -->
+        <div class="mb-6">
+            <h2 class="text-lg font-medium text-gray-800 mb-4">选择分享模板</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="selectTemplate(1)">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&auto=format&fit=crop&q=60" 
+                         alt="模板1" 
+                         class="w-full h-32 object-cover">
+                    <div class="p-3">
+                        <h3 class="text-sm font-medium text-gray-800">新车上市邀约</h3>
+                        <p class="text-xs text-gray-500 mt-1">适合新车发布活动邀约</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="selectTemplate(2)">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format&fit=crop&q=60" 
+                         alt="模板2" 
+                         class="w-full h-32 object-cover">
+                    <div class="p-3">
+                        <h3 class="text-sm font-medium text-gray-800">试驾活动邀约</h3>
+                        <p class="text-xs text-gray-500 mt-1">适合试驾活动邀约</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="selectTemplate(3)">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&auto=format&fit=crop&q=60" 
+                         alt="模板3" 
+                         class="w-full h-32 object-cover">
+                    <div class="p-3">
+                        <h3 class="text-sm font-medium text-gray-800">优惠促销邀约</h3>
+                        <p class="text-xs text-gray-500 mt-1">适合促销活动邀约</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="selectTemplate(4)">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&auto=format&fit=crop&q=60" 
+                         alt="模板4" 
+                         class="w-full h-32 object-cover">
+                    <div class="p-3">
+                        <h3 class="text-sm font-medium text-gray-800">品牌活动邀约</h3>
+                        <p class="text-xs text-gray-500 mt-1">适合品牌活动邀约</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 自定义文案 -->
+        <div class="mb-6">
+            <h2 class="text-lg font-medium text-gray-800 mb-4">自定义文案</h2>
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <textarea id="customMessage" 
+                          class="w-full h-32 p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                          placeholder="请输入您的个性化邀请语..."></textarea>
+            </div>
+        </div>
+
+        <!-- 分享按钮 -->
+        <div class="mb-6">
+            <button onclick="showShareOptions()" 
+                    class="w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors">
+                立即分享
+            </button>
+        </div>
+    </div>
+
+    <!-- 分享选项模态框 -->
+    <div id="shareModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium text-gray-800">分享方式</h3>
+                <button onclick="closeShareModal()" class="text-gray-500">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-4">
+                <div class="text-center" onclick="shareToWechat('friend')">
+                    <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fab fa-weixin text-green-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">微信好友</span>
+                </div>
+                <div class="text-center" onclick="shareToWechat('group')">
+                    <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-users text-green-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">微信群</span>
+                </div>
+                <div class="text-center" onclick="copyLink()">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-link text-blue-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">复制链接</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedTemplate = null;
+
+        // 选择分享模板
+        function selectTemplate(id) {
+            selectedTemplate = id;
+            // 移除其他模板的选中状态
+            document.querySelectorAll('.grid > div').forEach(div => {
+                div.classList.remove('ring-2', 'ring-blue-500');
+            });
+            // 添加当前模板的选中状态
+            event.currentTarget.classList.add('ring-2', 'ring-blue-500');
+        }
+
+        // 显示分享选项
+        function showShareOptions() {
+            if (!selectedTemplate) {
+                alert('请先选择分享模板');
+                return;
+            }
+            document.getElementById('shareModal').classList.remove('hidden');
+        }
+
+        // 关闭分享模态框
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+        }
+
+        // 分享到微信
+        function shareToWechat(type) {
+            alert(`链接已分享到微信${type === 'friend' ? '好友' : '群'}！`);
+            closeShareModal();
+        }
+
+        // 复制链接
+        function copyLink() {
+            const link = 'https://example.com/share/' + selectedTemplate;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('链接已复制到剪贴板！');
+                closeShareModal();
+            });
+        }
+
+        // 点击模态框背景关闭
+        document.getElementById('shareModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeShareModal();
+            }
+        });
+    </script>
+</body>
+</html> 

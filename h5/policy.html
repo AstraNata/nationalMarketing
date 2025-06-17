@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>首页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3">
+            <h1 class="text-lg font-semibold text-gray-800">首页</h1>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4 pb-20">
+        <!-- 黑科技展示 -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">黑科技展示</h2>
+            
+            <!-- 智能驾驶 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&auto=format&fit=crop&q=60" alt="智能驾驶" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <h3 class="text-lg font-medium text-white mb-1">智能驾驶系统</h3>
+                        <p class="text-sm text-white/80">全场景智能驾驶，让出行更安全</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-robot text-blue-500"></i>
+                            <span class="text-sm text-gray-600">AI辅助驾驶</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-blue-500"></i>
+                            <span class="text-sm text-gray-600">主动安全系统</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marked-alt text-blue-500"></i>
+                            <span class="text-sm text-gray-600">高精地图导航</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-car text-blue-500"></i>
+                            <span class="text-sm text-gray-600">自动泊车</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI智能座舱 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800&auto=format&fit=crop&q=60" alt="AI智能座舱" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <h3 class="text-lg font-medium text-white mb-1">AI智能座舱</h3>
+                        <p class="text-sm text-white/80">智能交互，打造移动生活空间</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-microphone text-blue-500"></i>
+                            <span class="text-sm text-gray-600">语音控制</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-brain text-blue-500"></i>
+                            <span class="text-sm text-gray-600">情感识别</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-mobile-alt text-blue-500"></i>
+                            <span class="text-sm text-gray-600">手机互联</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-music text-blue-500"></i>
+                            <span class="text-sm text-gray-600">智能音乐</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 智能充电 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&auto=format&fit=crop&q=60" alt="智能充电" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <h3 class="text-lg font-medium text-white mb-1">智能充电系统</h3>
+                        <p class="text-sm text-white/80">智能充电，让出行更便捷</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-bolt text-blue-500"></i>
+                            <span class="text-sm text-gray-600">快速充电</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-route text-blue-500"></i>
+                            <span class="text-sm text-gray-600">智能规划</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-battery-full text-blue-500"></i>
+                            <span class="text-sm text-gray-600">电池管理</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-charging-station text-blue-500"></i>
+                            <span class="text-sm text-gray-600">充电站导航</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 政策信息 -->
+        <div>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">政策信息</h2>
+            <!-- 政策列表 -->
+            <div class="space-y-4">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='policy-detail.html?id=1'">
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium text-gray-800">2024年汽车销售政策更新</h3>
+                            <span class="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">最新</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">为促进汽车市场健康发展，提升经销商营销效率，现就有关事项通知如下：</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>2024-01-15</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='policy-detail.html?id=2'">
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium text-gray-800">新能源汽车补贴政策</h3>
+                            <span class="text-xs text-green-500 bg-green-50 px-2 py-1 rounded">补贴</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">延续至2024年底，补贴标准维持不变，具体实施细则请咨询当地主管部门。</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>2024-01-10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='policy-detail.html?id=3'">
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium text-gray-800">经销商营销费用补贴</h3>
+                            <span class="text-xs text-purple-500 bg-purple-50 px-2 py-1 rounded">营销</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">提升至15%，支持经销商开展各类营销活动，促进销售增长。</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>2024-01-05</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="policy.html" class="flex flex-col items-center text-blue-500">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1">首页</span>
+            </a>
+            <a href="share.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                <i class="fas fa-share-alt text-xl"></i>
+                <span class="text-xs mt-1">邀约分享</span>
+            </a>
+            <a href="news.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                <i class="fas fa-newspaper text-xl"></i>
+                <span class="text-xs mt-1">品牌资讯</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">个人中心</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 图片预览模态框 -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50" onclick="closeModal()">
+        <img id="modalImage" class="max-w-full max-h-full m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    </div>
+
+    <script>
+        function showImage(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.classList.remove('hidden');
+            modalImg.src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框背景关闭
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // 阻止模态框内的图片点击事件冒泡
+        document.getElementById('modalImage').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html> 

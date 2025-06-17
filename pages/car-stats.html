@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车辆推荐统计 - 后台管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@heroicons/react@2.0.18/outline.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- 侧边栏 -->
+        <aside class="w-64 bg-white shadow-lg">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold text-gray-800">管理系统</h1>
+            </div>
+            <nav class="mt-4">
+                <!-- 系统管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="account-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">账号管理</a></li>
+                        <li><a href="agent-review.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人审核</a></li>
+                        <li><a href="agent-info.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人信息</a></li>
+                    </ul>
+                </div>
+                <!-- 业务管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">业务管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="broker-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人管理</a></li>
+                        <li><a href="car-stats.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded bg-gray-100">车辆推荐统计</a></li>
+                        <li><a href="report-analysis.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">报表分析</a></li>
+                        <li><a href="withdrawal-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">提现记录</a></li>
+                        <li><a href="incentive-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励发放记录</a></li>
+                    </ul>
+                </div>
+                <!-- 内容管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">内容管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="brand-news.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">品牌新闻</a></li>
+                        <li><a href="car-guide.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">用车指南</a></li>
+                        <li><a href="image-gallery.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">图片库</a></li>
+                        <li><a href="share-template.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">分享模板</a></li>
+                    </ul>
+                </div>
+                <!-- 系统配置 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统配置</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="incentive-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励配置</a></li>
+                        <li><a href="alert-rules.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">交易提醒规则</a></li>
+                        <li><a href="tech-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技配置</a></li>
+                        <li><a href="policy-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">政策配置</a></li>
+                        <li><a href="car-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆配置</a></li>
+                        <li><a href="tech-publish.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技发布</a></li>
+                    </ul>
+                </div>
+                <!-- 消息中心 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">消息中心</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="message-center.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">消息管理</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 p-8">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <!-- 统计概览 -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900">总推荐数</h3>
+                        <p class="mt-2 text-3xl font-bold text-blue-600">1,234</p>
+                        <p class="mt-2 text-sm text-gray-500">较上月增长 12%</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900">成交数</h3>
+                        <p class="mt-2 text-3xl font-bold text-green-600">89</p>
+                        <p class="mt-2 text-sm text-gray-500">较上月增长 8%</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900">转化率</h3>
+                        <p class="mt-2 text-3xl font-bold text-yellow-600">7.2%</p>
+                        <p class="mt-2 text-sm text-gray-500">较上月增长 2%</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900">平均成交周期</h3>
+                        <p class="mt-2 text-3xl font-bold text-purple-600">15天</p>
+                        <p class="mt-2 text-sm text-gray-500">较上月减少 2天</p>
+                    </div>
+                </div>
+
+                <!-- 筛选条件 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm font-medium text-gray-700">时间范围</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>最近7天</option>
+                                <option>最近30天</option>
+                                <option>最近90天</option>
+                                <option>自定义</option>
+                            </select>
+                        </div>
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm font-medium text-gray-700">车型</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部车型</option>
+                                <option>SUV</option>
+                                <option>轿车</option>
+                                <option>MPV</option>
+                            </select>
+                        </div>
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm font-medium text-gray-700">价格区间</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部价格</option>
+                                <option>20万以下</option>
+                                <option>20-30万</option>
+                                <option>30-50万</option>
+                                <option>50万以上</option>
+                            </select>
+                        </div>
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm font-medium text-gray-700">经纪人</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部经纪人</option>
+                                <option>张三</option>
+                                <option>李四</option>
+                                <option>王五</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图表展示 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 推荐趋势图 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">推荐趋势</h3>
+                        <canvas id="recommendationTrend"></canvas>
+                    </div>
+                    <!-- 车型分布图 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">车型分布</h3>
+                        <canvas id="carTypeDistribution"></canvas>
+                    </div>
+                </div>
+
+                <!-- 详细数据表格 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">详细数据</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">车型</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">推荐数</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">成交数</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">转化率</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">平均成交周期</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Model Y</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">456</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">34</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7.5%</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">14天</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Model 3</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">389</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">28</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7.2%</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">16天</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 推荐趋势图
+        const trendCtx = document.getElementById('recommendationTrend').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+                datasets: [{
+                    label: '推荐数',
+                    data: [150, 230, 180, 290, 200, 250],
+                    borderColor: 'rgb(59, 130, 246)',
+                    tension: 0.1
+                }, {
+                    label: '成交数',
+                    data: [12, 19, 15, 25, 18, 22],
+                    borderColor: 'rgb(16, 185, 129)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // 车型分布图
+        const distributionCtx = document.getElementById('carTypeDistribution').getContext('2d');
+        new Chart(distributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Model Y', 'Model 3', 'Model X', 'Model S'],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: [
+                        'rgb(59, 130, 246)',
+                        'rgb(16, 185, 129)',
+                        'rgb(245, 158, 11)',
+                        'rgb(139, 92, 246)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

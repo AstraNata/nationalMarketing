@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>激励发放记录 - 后台管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@heroicons/react@2.0.18/outline.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- 侧边栏 -->
+        <aside class="w-64 bg-white shadow-lg">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold text-gray-800">管理系统</h1>
+            </div>
+            <nav class="mt-4">
+                <!-- 系统管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="account-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">账号管理</a></li>
+                        <li><a href="agent-review.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人审核</a></li>
+                        <li><a href="agent-info.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人信息</a></li>
+                    </ul>
+                </div>
+                <!-- 业务管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">业务管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="broker-management.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">经纪人管理</a></li>
+                        <li><a href="car-stats.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆推荐统计</a></li>
+                        <li><a href="report-analysis.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">报表分析</a></li>
+                        <li><a href="withdrawal-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">提现记录</a></li>
+                        <li><a href="incentive-records.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded bg-gray-100">激励发放记录</a></li>
+                    </ul>
+                </div>
+                <!-- 内容管理 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">内容管理</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="brand-news.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">品牌新闻</a></li>
+                        <li><a href="car-guide.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">用车指南</a></li>
+                        <li><a href="image-gallery.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">图片库</a></li>
+                        <li><a href="share-template.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">分享模板</a></li>
+                    </ul>
+                </div>
+                <!-- 系统配置 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">系统配置</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="incentive-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">激励配置</a></li>
+                        <li><a href="alert-rules.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">交易提醒规则</a></li>
+                        <li><a href="tech-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技配置</a></li>
+                        <li><a href="policy-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">政策配置</a></li>
+                        <li><a href="car-config.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">车辆配置</a></li>
+                        <li><a href="tech-publish.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">黑科技发布</a></li>
+                    </ul>
+                </div>
+                <!-- 消息中心 -->
+                <div class="px-4 py-2">
+                    <h2 class="text-sm font-semibold text-gray-600">消息中心</h2>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="message-center.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">消息管理</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 p-8">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <!-- 激励发放记录卡片 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900">激励发放记录</h2>
+                        <button onclick="exportRecords()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            导出记录
+                        </button>
+                    </div>
+
+                    <!-- 筛选和搜索 -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">激励类型</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部类型</option>
+                                <option>新客户获取</option>
+                                <option>客户拜访</option>
+                                <option>成交奖励</option>
+                                <option>团队业绩</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">经纪人</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部经纪人</option>
+                                <option>张三</option>
+                                <option>李四</option>
+                                <option>王五</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">发放状态</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option>全部状态</option>
+                                <option>已发放</option>
+                                <option>待发放</option>
+                                <option>发放失败</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">搜索</label>
+                            <input type="text" placeholder="搜索记录..." class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- 记录列表 -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">记录编号</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激励类型</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">经纪人</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激励积分</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">发放时间</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状态</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">INC20240315001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">新客户获取</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">张三</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">100</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2024-03-15 10:00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                            已发放
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button onclick="viewRecord('INC20240315001')" class="text-blue-600 hover:text-blue-900 mr-3">查看</button>
+                                        <button class="text-red-600 hover:text-red-900">撤销</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">INC20240315002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">成交奖励</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">李四</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">500</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2024-03-15 14:30</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            待发放
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button onclick="viewRecord('INC20240315002')" class="text-blue-600 hover:text-blue-900 mr-3">查看</button>
+                                        <button class="text-red-600 hover:text-red-900">撤销</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 分页 -->
+                    <div class="flex justify-between items-center mt-6">
+                        <div class="text-sm text-gray-700">
+                            显示 1 到 2 条，共 10 条
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">上一页</button>
+                            <button class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">下一页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 记录详情模态框 -->
+    <div id="recordModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-xl font-bold text-gray-900">激励记录详情</h3>
+                    <button onclick="closeRecordModal()" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">记录编号</label>
+                                <div class="mt-1 text-sm text-gray-900" id="recordId"></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">激励类型</label>
+                                <div class="mt-1 text-sm text-gray-900" id="recordType"></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">经纪人</label>
+                                <div class="mt-1 text-sm text-gray-900" id="recordBroker"></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">激励积分</label>
+                                <div class="mt-1 text-sm text-gray-900" id="recordPoints"></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">发放时间</label>
+                                <div class="mt-1 text-sm text-gray-900" id="recordTime"></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">状态</label>
+                                <div class="mt-1" id="recordStatus"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">激励说明</label>
+                            <div class="mt-1 text-sm text-gray-900" id="recordDescription"></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">关联业务</label>
+                            <div class="mt-1 text-sm text-gray-900" id="recordBusiness"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3 p-6 border-t">
+                    <button onclick="closeRecordModal()" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 查看记录详情
+        function viewRecord(id) {
+            // 这里应该从后端获取记录详情
+            // 示例数据
+            const record = {
+                id: id,
+                type: '新客户获取',
+                broker: '张三',
+                points: 100,
+                time: '2024-03-15 10:00',
+                status: '已发放',
+                description: '成功获取新客户，完成客户信息录入和初步沟通。',
+                business: '客户ID: CUS20240315001'
+            };
+
+            // 填充数据
+            document.getElementById('recordId').textContent = record.id;
+            document.getElementById('recordType').textContent = record.type;
+            document.getElementById('recordBroker').textContent = record.broker;
+            document.getElementById('recordPoints').textContent = record.points;
+            document.getElementById('recordTime').textContent = record.time;
+            document.getElementById('recordDescription').textContent = record.description;
+            document.getElementById('recordBusiness').textContent = record.business;
+
+            // 设置状态标签
+            const statusElement = document.getElementById('recordStatus');
+            statusElement.innerHTML = `
+                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                    ${record.status}
+                </span>
+            `;
+
+            // 显示模态框
+            document.getElementById('recordModal').classList.remove('hidden');
+        }
+
+        // 关闭记录详情模态框
+        function closeRecordModal() {
+            document.getElementById('recordModal').classList.add('hidden');
+        }
+
+        // 导出记录
+        function exportRecords() {
+            // 这里实现导出功能
+            console.log('导出记录');
+        }
+    </script>
+</body>
+</html> 

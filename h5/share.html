@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>邀约分享</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center">
+            <button onclick="history.back()" class="text-gray-600">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1 class="text-lg font-semibold text-gray-800 flex-1 text-center">邀约分享</h1>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4 pb-20">
+        <!-- 邀约记录列表 -->
+        <div class="space-y-4">
+            <!-- 邀约记录项 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer" onclick="showInviteDetail(1)">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <h3 class="text-base font-medium text-gray-800">张先生</h3>
+                            <p class="text-sm text-gray-500">138****8000</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">已成功</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>邀约时间：2024-03-20 14:30</span>
+                        <span>模板：春季特惠</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer" onclick="showInviteDetail(2)">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <h3 class="text-base font-medium text-gray-800">李女士</h3>
+                            <p class="text-sm text-gray-500">139****9000</p>
+                        </div>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">待跟进</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>邀约时间：2024-03-19 10:15</span>
+                        <span>模板：新品上市</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer" onclick="showInviteDetail(3)">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <h3 class="text-base font-medium text-gray-800">王先生</h3>
+                            <p class="text-sm text-gray-500">137****7000</p>
+                        </div>
+                        <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">未成功</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>邀约时间：2024-03-18 16:45</span>
+                        <span>模板：限时优惠</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增分享按钮 -->
+        <div class="mt-4">
+            <button onclick="showShareOptions()" 
+                    class="w-full px-4 py-3 bg-blue-500 text-white rounded-lg shadow-sm flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <i class="fas fa-plus mr-2"></i>
+                <span>新增分享</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="policy.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1">首页</span>
+            </a>
+            <a href="share.html" class="flex flex-col items-center text-blue-500">
+                <i class="fas fa-share-alt text-xl"></i>
+                <span class="text-xs mt-1">邀约分享</span>
+            </a>
+            <a href="news.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                <i class="fas fa-newspaper text-xl"></i>
+                <span class="text-xs mt-1">品牌资讯</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">个人中心</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 分享选项模态框 -->
+    <div id="shareOptionsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg w-full max-w-sm">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-800">选择分享方式</h3>
+                        <button onclick="closeShareOptions()" class="text-gray-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="share-link.html" class="flex flex-col items-center justify-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                            <i class="fas fa-link text-blue-500 text-2xl mb-2"></i>
+                            <span class="text-sm text-gray-600">链接分享</span>
+                        </a>
+                        <a href="share-poster.html" class="flex flex-col items-center justify-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                            <i class="fas fa-image text-blue-500 text-2xl mb-2"></i>
+                            <span class="text-sm text-gray-600">海报分享</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 邀约详情模态框 -->
+    <div id="inviteDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg w-full max-w-sm">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-800">邀约详情</h3>
+                        <button onclick="closeInviteDetail()" class="text-gray-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-base font-medium text-gray-800 mb-2">张先生</h4>
+                            <p class="text-sm text-gray-500">138****8000</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">邀约时间</span>
+                                    <span class="text-sm text-gray-800">2024-03-20 14:30</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">使用模板</span>
+                                    <span class="text-sm text-gray-800">春季特惠</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">邀约结果</span>
+                                    <span class="text-sm text-green-600">已成功</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">备注信息</span>
+                                    <span class="text-sm text-gray-800">客户对优惠活动很感兴趣，约定周末到店</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 显示分享选项
+        function showShareOptions() {
+            document.getElementById('shareOptionsModal').classList.remove('hidden');
+        }
+
+        // 关闭分享选项
+        function closeShareOptions() {
+            document.getElementById('shareOptionsModal').classList.add('hidden');
+        }
+
+        // 显示邀约详情
+        function showInviteDetail(id) {
+            document.getElementById('inviteDetailModal').classList.remove('hidden');
+            // 这里可以添加加载邀约详情的逻辑
+            console.log('加载邀约详情：', id);
+        }
+
+        // 关闭邀约详情
+        function closeInviteDetail() {
+            document.getElementById('inviteDetailModal').classList.add('hidden');
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 这里可以添加加载邀约记录列表的逻辑
+            console.log('加载邀约记录列表');
+        });
+    </script>
+</body>
+</html> 

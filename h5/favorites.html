@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的收藏</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center">
+            <a href="profile.html" class="mr-3">
+                <i class="fas fa-chevron-left text-gray-600"></i>
+            </a>
+            <h1 class="text-lg font-semibold text-gray-800">我的收藏</h1>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="container mx-auto px-4 py-4">
+        <!-- 收藏列表 -->
+        <div class="space-y-4">
+            <!-- 收藏项 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-medium text-gray-800">2024年新能源汽车补贴政策解读</h3>
+                        <button onclick="removeFavorite(1)" class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">收藏时间：2024-03-20 14:30</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-newspaper mr-2"></i>
+                        <span>品牌资讯</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-medium text-gray-800">智能驾驶系统使用指南</h3>
+                        <button onclick="removeFavorite(2)" class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">收藏时间：2024-03-19 10:15</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i>
+                        <span>用车指南</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-medium text-gray-800">春季保养攻略</h3>
+                        <button onclick="removeFavorite(3)" class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">收藏时间：2024-03-18 16:45</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-tools mr-2"></i>
+                        <span>保养维护</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 移除收藏
+        function removeFavorite(id) {
+            if (confirm('确定要取消收藏吗？')) {
+                // 这里添加取消收藏的逻辑
+                console.log('取消收藏：', id);
+                // 移除对应的元素
+                const item = event.target.closest('.bg-white');
+                item.remove();
+            }
+        }
+
+        // 点击收藏项跳转到详情页
+        document.querySelectorAll('.bg-white').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (!e.target.closest('button')) {
+                    // 这里添加跳转到详情页的逻辑
+                    console.log('跳转到详情页');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
